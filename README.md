@@ -62,7 +62,7 @@ Personal dotfiles and system configurations for a keyboard-driven, Wayland-based
 
     `cleanup` — Run package autoremove.
 
-    `helpc` - Print all the aliases available/declared 
+    `helpc` — Print all the aliases available/declared 
 
     `helpc2` — Print custom user aliases with clean column alignment.
 

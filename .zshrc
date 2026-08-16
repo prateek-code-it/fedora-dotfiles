@@ -118,9 +118,38 @@ alias mic="bash ~/.config/hypr/scripts/toggle-mic.sh"
 # Config files
 # ------------------------------------------------------------
 
+
+# Generate dynamic default commit message with metadata
+gen_dotmsg() {
+  local dt
+  local host
+  local branch
+  local changed_files
+
+  dt=$(date '+%Y-%m-%d %H:%M:%S')
+  host=$(uname -n)
+  branch=$(git -C ~/.config rev-parse --abbrev-ref HEAD 2>/dev/null || echo "main")
+  
+  # Extract list of modified/added files
+  changed_files=$(git -C ~/.config status --short | awk '{print $2}' | tr '\n' ', ' | sed 's/, $//')
+
+  if [[ -n "$changed_files" ]]; then
+    echo "Alteration on $dt | Host: $host | Branch: $branch | Modified: [$changed_files]"
+  else
+    echo "Alteration on $dt | Host: $host | Branch: $branch"
+  fi
+}
+
+
 dotpush() {
-  local msg="${1:-Config update: $(date '+%Y-%m-%d %H:%M')}"
+  local msg="$1"
+
   git -C ~/.config add .
+
+  if [ -z "$msg" ]; then
+    msg=$(gen_dotmsg)
+  fi
+
   git -C ~/.config commit -m "$msg"
   git -C ~/.config push origin main
 }

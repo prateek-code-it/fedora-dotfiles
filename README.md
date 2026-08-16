@@ -33,8 +33,8 @@ Personal dotfiles and system configurations for a keyboard-driven, Wayland-based
 
 ```text
 #Hyprland Shortcuts
-| Shortcut | Action | Description
-|:--- | :---|:---
+| Shortcut | Action | Description |
+|:--- | :---|:--- |
 | `Super + V` | Clipboard Menu | Search and paste from cliphist history via Rofi |
 | `Super + Shift + V` | Wipe Clipboard | Clear cliphist history database |
 | `Super + Enter` | Terminal | Open Kitty terminal session |

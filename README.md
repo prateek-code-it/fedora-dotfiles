@@ -28,8 +28,8 @@ Personal dotfiles and system configurations for a keyboard-driven, Wayland-based
 ├── .zshrc              # Tracked shell configuration (symlinked to ~/)
 └── README.md
 ```
-
-##⚡ Custom Keybindings & Features
+---
+## ⚡ Custom Keybindings & Features
 
 ```text
 #Hyprland Shortcuts
@@ -39,8 +39,9 @@ Super + Shift + V	#Wipe Clipboard	Clear cliphist history database
 Super + Enter		#Terminal	Open Kitty terminal session
 Super + Q		#Kill Window	Close active focused client
 ```
+---
 
-##🐚 Zsh Aliases & Functions
+## 🐚 Zsh Aliases & Functions
 
 **Key shell utilities defined in .zshrc:**
 * **Dotfiles Management**
@@ -69,7 +70,8 @@ Super + Q		#Kill Window	Close active focused client
 
     vpn — Check WARP connection status.
 
-##🚀 Installation & Syncing
+---
+## 🚀 Installation & Syncing
 
    1. Clone the repository directly into ~/.config:
     ```Bash

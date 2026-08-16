@@ -31,15 +31,15 @@ Personal dotfiles and system configurations for a keyboard-driven, Wayland-based
 ---
 ## ⚡ Custom Keybindings & Features
 
-```text
-#Hyprland Shortcuts
+
+# Hyprland Shortcuts
 | Shortcut | Action | Description |
 |:--- | :---|:--- |
 | `Super + V` | Clipboard Menu | Search and paste from cliphist history via Rofi |
 | `Super + Shift + V` | Wipe Clipboard | Clear cliphist history database |
 | `Super + Enter` | Terminal | Open Kitty terminal session |
 | `Super + Q` | Kill Window | Close active focused client |
-```
+
 ---
 
 ## 🐚 Zsh Aliases & Functions
@@ -70,7 +70,7 @@ Personal dotfiles and system configurations for a keyboard-driven, Wayland-based
    1. Clone the repository directly into ~/.config:
    ``` bash
 
-    git clone <YOUR_REPO_URL> ~/.config
+    git clone https://github.com/prateek-code-it/fedora-dotfiles.git  ~/.config
    ```
    2. Symlink .zshrc to $HOME:
    ``` bash

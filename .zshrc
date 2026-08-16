@@ -129,7 +129,7 @@ gen_dotmsg() {
   dt=$(date '+%Y-%m-%d %H:%M:%S')
   host=$(uname -n)
   branch=$(git -C ~/.config rev-parse --abbrev-ref HEAD 2>/dev/null || echo "main")
-  
+
   # Extract list of modified/added files
   changed_files=$(git -C ~/.config status --short | awk '{print $2}' | tr '\n' ', ' | sed 's/, $//')
 
@@ -164,6 +164,7 @@ alias dot-pull='git -C ~/.config pull origin main'
 alias dot-status='git -C ~/.config status'
 alias dot-diff='git -C ~/.config diff'
 
+
 # ------------------------------------------------------------
 # File Safety
 # ------------------------------------------------------------
@@ -181,6 +182,7 @@ alias zshrc='nvim ~/.zshrc'
 alias p10k='nvim ~/.p10k.zsh'
 
 alias reload='source ~/.zshrc'
+
 
 
 # ------------------------------------------------------------
@@ -214,20 +216,40 @@ alias gstp='git stash pop'
 
 alias gr='git remote -v'
 
-# ------------------------------------------------------------
-# Clipboard and Output Management
-# ------------------------------------------------------------
 
+# ------------------------------------
+# Clipboard and Output Management
+# ------------------------------------
+
+# Copy the exact command string of the previous command
+copylastcmd() {
+  fc -ln -1 | sed 's/^[[:space:]]*//' | wl-copy
+  echo "Copied last command string to clipboard."
+}
+
+# Copy the stdout/stderr output by re-evaluating in the current shell
 copylast() {
-  fc -ln -1 | sed 's/^[[:space:]]*//' | bash | wl-copy
-  echo "Copied output of last command to clipboard."
+  local last_cmd
+  last_cmd=$(fc -ln -1 | sed 's/^[[:space:]]*//')
+
+  if [[ -n "$last_cmd" ]]; then
+    eval "$last_cmd" | wl-copy
+    echo "Re-ran command and copied output to clipboard."
+  fi
 }
 
 alias cl='copylast'
+alias clc='copylastcmd'
 
-alias empty='echo " " >'
+# Quick clipboard aliases
 alias c='wl-copy'
-alias ctee='wl-copy -t text/plain | tee'
+alias p='wl-paste'
+
+# Pipe output to both terminal and clipboard simultaneously
+alias ctee='tee >(wl-copy)'
+
+# Clear file contents
+alias empty='echo -n >'
 
 # ------------------------------------------------------------
 # System

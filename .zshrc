@@ -255,7 +255,7 @@ alias empty='echo -n >'
 # System
 # ------------------------------------------------------------
 
-sysup() {
+sysupdate() {
   echo "📦 Updating system packages..."
   sudo dnf upgrade --refresh -y
   if command -v flatpak &>/dev/null; then
@@ -265,7 +265,7 @@ sysup() {
   echo "✅ System update complete."
 }
 
-alias sysup='sysup'
+alias sysup='sysupdate'
 alias update='sudo dnf upgrade --refresh'
 alias cleanup='sudo dnf autoremove'
 
@@ -322,6 +322,26 @@ fi
 
 alias sys="fastfetch"
 alias ff="fastfetch --logo-type kitty-direct --logo ~/.config/fastfetch/fedora.png --logo-width 24 --logo-height 12  "
+
+
+# ------------------------------------
+# Alias Viewer Functions
+# ------------------------------------
+
+# List all active aliases formatted cleanly in columns
+listalias() {
+  alias | sed "s/=/  ->  /" | column -t -s "->"
+}
+
+# Print only the aliases explicitly defined in your ~/.zshrc
+myaliases() {
+  local target="${HOME}/.config/.zshrc"
+  [[ ! -f "$target" ]] && target="${HOME}/.zshrc"
+
+  grep -E '^\s*alias\s+' "$target" | sed -E "s/^\s*alias\s+//g; s/=['\"]?/  ->  /; s/['\"]?$//" | column -t -s "->"
+}
+
+alias helpc='listalias;myaliases'
 
 
 

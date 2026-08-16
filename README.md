@@ -46,13 +46,13 @@ Super + Q		#Kill Window	Close active focused client
 **Key shell utilities defined in .zshrc:**
 * **Dotfiles Management**
 
-    dotstat — Check Git status of ~/.config from any directory.
+    dot-status — Check Git status of ~/.config from any directory.
 
-    dotdiff — View uncommitted changes across tracked dotfiles.
+    dot-diff — View uncommitted changes across tracked dotfiles.
 
-    dotpush [msg] — Stage, auto-commit with metadata (date/host/changed files), and push to GitHub.
+    dot-push [msg] — Stage, auto-commit with metadata (date/host/changed files), and push to GitHub.
 
-    dotpull — Pull and sync the latest changes from the remote repo.
+    dot-pull — Pull and sync the latest changes from the remote repo.
 
 * **System Maintenance**
 
@@ -60,7 +60,7 @@ Super + Q		#Kill Window	Close active focused client
 
     cleanup — Run package autoremove.
 
-    myaliases — Print custom user aliases with clean column alignment.
+    helpc — Print custom user aliases with clean column alignment.
 
 * **Network Controls**
 
@@ -77,29 +77,16 @@ Super + Q		#Kill Window	Close active focused client
     ```Bash
 
     git clone <YOUR_REPO_URL> ~/.config
-```
+   ```
    2. Symlink .zshrc to $HOME:
    ``` Bash
 
     ln -sf ~/.config/.zshrc ~/.zshrc
-```
+   ```
    3. Reload shell environment:
    ``` Bash
 
     source ~/.zshrc
-```
+   ```
 
 ---
-
-### How to Add It to Your Dotfiles
-
-1. Make sure `README.md` is whitelisted in your `~/.config/.gitignore`:
-   ```bash
-   echo "!README.md" >> ~/.config/.gitignore
-```
-2. Write the file inside ~/.config/README.md.
-
-3. Commit and push it:
-```bash
-dotpush "Add README documentation"
-```

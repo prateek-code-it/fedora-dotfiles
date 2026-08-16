@@ -1,0 +1,14 @@
+cc.arduino.IDE2
+com.brave.Browser
+com.discordapp.Discord
+com.github.phase1geo.minder
+com.google.AndroidStudio
+com.rtosta.zapzap
+com.spotify.Client
+com.sweethome3d.Sweethome3d
+com.visualstudio.code
+com.warlordsoftwares.youtube-downloader-4ktube
+io.github.shiftey.Desktop
+org.freecad.FreeCAD
+org.gimp.GIMP
+org.kde.ktouch

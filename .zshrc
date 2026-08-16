@@ -148,6 +148,10 @@ dotpush() {
 
   if [ -z "$msg" ]; then
     msg=$(gen_dotmsg)
+    echo $msg
+  else
+   msg="${1:-Config update: $(date '+%Y-%m-%d %H:%M')}"
+   echo $msg
   fi
 
   git -C ~/.config commit -m "$msg"

@@ -80,7 +80,10 @@ Personal dotfiles and system configurations for a keyboard-driven, Wayland-based
    1. Clone the repository directly into ~/.config:
    ``` bash
 
-    git clone https://github.com/prateek-code-it/fedora-dotfiles.git  ~/.config
+    git clone https://github.com/prateek-code-it/fedora-dotfiles.git ~/.dotfiles 
+    cd ~/.dotfiles 
+    chmod +x install.sh 
+    ./instal.sh
    ```
    2. Symlink .zshrc to $HOME:
    ``` bash

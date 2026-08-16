@@ -328,20 +328,41 @@ alias ff="fastfetch --logo-type kitty-direct --logo ~/.config/fastfetch/fedora.p
 # Alias Viewer Functions
 # ------------------------------------
 
-# List all active aliases formatted cleanly in columns
-listalias() {
-  alias | sed "s/=/  ->  /" | column -t -s "->"
-}
+# ------------------------------------
+# Formatted Alias Viewers
+# ------------------------------------
 
-# Print only the aliases explicitly defined in your ~/.zshrc
+# View only the custom aliases defined in your .zshrc
 myaliases() {
   local target="${HOME}/.config/.zshrc"
   [[ ! -f "$target" ]] && target="${HOME}/.zshrc"
 
-  grep -E '^\s*alias\s+' "$target" | sed -E "s/^\s*alias\s+//g; s/=['\"]?/  ->  /; s/['\"]?$//" | column -t -s "->"
+  echo -e "\033[1;34mALIAS\033[0m\t\t\033[1;32mCOMMAND\033[0m"
+  echo -e "\033[1;30m------------------------------------------------------------\033[0m"
+
+  grep -E '^\s*alias\s+' "$target" | sed -E "s/^\s*alias\s+//g" | awk -F'=' '{
+    name = $1;
+    sub(/^['\''"]/, "", $2);
+    sub(/['\''"]$/, "", $2);
+    printf "%-18s \033[0;36m➜\033[0m  %s\n", name, substr($0, index($0, "=") + 1)
+  }'
 }
 
-alias helpc='listalias;myaliases'
+# View all active aliases loaded in the session
+listalias() {
+  echo -e "\033[1;34mALIAS\033[0m\t\t\033[1;32mCOMMAND\033[0m"
+  echo -e "\033[1;30m------------------------------------------------------------\033[0m"
+
+  alias | awk -F'=' '{
+    name = $1;
+    cmd = substr($0, index($0, "=") + 1);
+    gsub(/^'\''|'\''$/, "", cmd);
+    printf "%-18s \033[0;36m➜\033[0m  %s\n", name, cmd
+  }'
+}
+
+alias helpc='listalias'
+alias helpc2='myaliases'
 
 
 

@@ -4,6 +4,7 @@
 # 2. Whitelist the config folders you want to track
 !/hypr/
 !/hypr/**
+!/lists/
 !/rofi/
 !/rofi/**
 !/waybar/
@@ -26,3 +27,4 @@
 *credentials*
 !.zshrc
 !README.md
+!install.sh

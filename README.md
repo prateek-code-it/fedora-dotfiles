@@ -20,21 +20,21 @@ Personal dotfiles and system configurations for a keyboard-driven, Wayland-based
 ## 📁 Repository Structure
 
 ```text
-~/.config/
-├── hypr/               # Hyprland window rules, binds, and autostart
-├── kitty/              # Terminal appearance and keymaps
-├── rofi/               # Application launcher, calculator, clipboard menus
-├── fastfetch/          # System fetch art and configuration
-├── .zshrc              # Tracked shell configuration (symlinked to ~/)
-└── README.md
+	~/.config/
+	├── hypr/               # Hyprland window rules, binds, and autostart
+	├── kitty/              # Terminal appearance and keymaps
+	├── rofi/               # Application launcher, calculator, clipboard menus
+	├── fastfetch/          # System fetch art and configuration
+	├── .zshrc              # Tracked shell configuration (symlinked to ~/)
+	└── README.md
 ```
 ---
 ## ⚡ Custom Keybindings & Features
 
 
-# Hyprland Shortcuts
+### Hyprland Shortcuts
 | Shortcut | Action | Description |
-|:--- | :---|:---: |
+|:--- | :---|:--- |
 | `Super + V` | Clipboard Menu | Search and paste from cliphist history via Rofi |
 | `Super + Shift + V` | Wipe Clipboard | Clear cliphist history database |
 | `Super + Enter` | Terminal | Open Kitty terminal session |
@@ -46,33 +46,33 @@ Personal dotfiles and system configurations for a keyboard-driven, Wayland-based
 ## 🐚 Zsh Aliases & Functions
 
 **Key shell utilities defined in .zshrc:**
-* **Dotfiles Management**
+- **Dotfiles Management**
 
-    `dot-status` — Check Git status of ~/.config from any directory.
+   * `dot-status` — _Check Git status of ~/.config from any directory._
 
-    `dot-diff` — View uncommitted changes across tracked dotfiles.
+   * `dot-diff` — _View uncommitted changes across tracked dotfiles._
 
-    `dot-push [msg]` — Stage, auto-commit with metadata (date/host/changed files), and push to GitHub.
+   * `dot-push [msg]` — _Stage, auto-commit with metadata (date/host/changed files), and push to GitHub._
 
-    `dot-pull` — Pull and sync the latest changes from the remote repo.
+   * `dot-pull` — _Pull and sync the latest changes from the remote repo._
 
-* **System Maintenance**
+- **System Maintenance**
 
-    `sysup / update` — Refresh and upgrade DNF packages and Flatpaks.
+   * `sysup / update` — _Refresh and upgrade DNF packages and Flatpaks._
 
-    `cleanup` — Run package autoremove.
+   * `cleanup` — _Run package autoremove._
 
-    `helpc` — Print all the aliases available/declared 
+   * `helpc` — _Print all the aliases available/declared_ 
 
-    `helpc2` — Print custom user aliases with clean column alignment.
+   * `helpc2` — _Print custom user aliases with clean column alignment._
 
-* **Network Controls**
+- **Network Controls**
 
-    `vpnon` — Connect Cloudflare WARP (warp-cli connect).
+   * `vpnon` — _Connect Cloudflare WARP (warp-cli connect)._
 
-    `vpnoff` — Disconnect Cloudflare WARP (warp-cli disconnect).
+   * `vpnoff` — _Disconnect Cloudflare WARP (warp-cli disconnect)._
 
-    `vpn` — Check WARP connection status.
+   * `vpn` — _Check WARP connection status._
 
 ---
 ## 🚀 Installation & Syncing

@@ -77,7 +77,7 @@ Super + Q		#Kill Window	Close active focused client
     ```Bash
 
     git clone <YOUR_REPO_URL> ~/.config
-   ```
+    ```
    2. Symlink .zshrc to $HOME:
    ``` Bash
 

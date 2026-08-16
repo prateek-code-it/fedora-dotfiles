@@ -48,20 +48,27 @@ Personal dotfiles and system configurations for a keyboard-driven, Wayland-based
 * **Dotfiles Management**
 
     `dot-status` — Check Git status of ~/.config from any directory.
+
     `dot-diff` — View uncommitted changes across tracked dotfiles.
+
     `dot-push [msg]` — Stage, auto-commit with metadata (date/host/changed files), and push to GitHub.
+
     `dot-pull` — Pull and sync the latest changes from the remote repo.
 
 * **System Maintenance**
 
     `sysup / update` — Refresh and upgrade DNF packages and Flatpaks.
+
     `cleanup` — Run package autoremove.
+
     `helpc` — Print custom user aliases with clean column alignment.
 
 * **Network Controls**
 
     `vpnon` — Connect Cloudflare WARP (warp-cli connect).
+
     `vpnoff` — Disconnect Cloudflare WARP (warp-cli disconnect).
+
     `vpn` — Check WARP connection status.
 
 ---

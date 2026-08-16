@@ -77,7 +77,7 @@ Personal dotfiles and system configurations for a keyboard-driven, Wayland-based
 ---
 ## 🚀 Installation & Syncing
 
-   1. Clone the repository directly into ~/.config:
+   1. Clone the repository directly into ~/.dotfiles :
    ``` bash
 
     git clone https://github.com/prateek-code-it/fedora-dotfiles.git ~/.dotfiles 

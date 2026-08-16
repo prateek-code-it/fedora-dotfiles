@@ -1,0 +1,643 @@
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+/* Improved high-contrast Wallust theme */
+
+@import '../../.config/waybar/wallust/colors-waybar.css';
+
+/* =========================
+   COLOR DEFINITIONS
+   ========================= */
+
+@define-color backgroundlight rgba(43, 52, 50, 0.92);
+@define-color backgrounddark rgba(20, 27, 26, 0.94);
+
+@define-color workspacesbackground1 rgba(43, 52, 50, 0.92);
+@define-color workspacesbackground2 rgba(8, 184, 157, 0.35);
+
+@define-color bordercolor #08B89D;
+
+@define-color textcolor1 #F3F7F6;
+@define-color textcolor2 #D5E5E2;
+@define-color textcolor3 #FFFFFF;
+
+@define-color iconcolor #E8F5F2;
+
+
+/* =========================
+   GLOBAL
+   ========================= */
+
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-weight: bold;
+    min-height: 0;
+
+    font-size: 97%;
+
+    font-feature-settings:
+        '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+}
+
+
+/* =========================
+   WAYBAR
+   ========================= */
+
+window#waybar {
+    background: rgba(20, 27, 26, 0.90);
+
+    color: #F3F7F6;
+
+    border: 1px solid rgba(123, 211, 198, 0.28);
+    border-radius: 10px;
+
+    transition-property: background-color;
+    transition-duration: 0.5s;
+}
+
+window#waybar.hidden {
+    opacity: 0.5;
+}
+
+
+/* =========================
+   EMPTY WINDOW
+   ========================= */
+
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+
+/* =========================
+   WORKSPACES
+   ========================= */
+
+#workspaces {
+    background: @workspacesbackground1;
+
+    margin: 2px 18px 3px 1px;
+    margin-left: 6px;
+
+    padding: 0px 2px;
+
+    border-radius: 8px;
+    border: 1px solid rgba(123, 211, 198, 0.18);
+
+    font-style: normal;
+
+    color: @textcolor1;
+}
+
+#workspaces button {
+    padding: 0px 7px;
+    margin: 3px 2px;
+
+    border-radius: 6px;
+
+    color: #A9BDB9;
+    background-color: transparent;
+
+    transition: all 0.15s linear;
+}
+
+#workspaces button.active {
+    color: #FFFFFF;
+
+    background: rgba(8, 184, 157, 0.38);
+
+    border: 1px solid rgba(123, 211, 198, 0.50);
+
+    border-radius: 6px;
+
+    min-width: 30px;
+
+    transition: all 0.15s linear;
+}
+
+#workspaces button:hover {
+    color: #FFFFFF;
+
+    background: rgba(8, 184, 157, 0.25);
+
+    border-radius: 6px;
+
+    opacity: 1;
+}
+
+
+/* =========================
+   TOOLTIP
+   ========================= */
+
+tooltip {
+    border-radius: 12px;
+
+    background-color: rgba(20, 27, 26, 0.97);
+
+    border: 1px solid rgba(123, 211, 198, 0.35);
+
+    opacity: 0.98;
+
+    padding: 12px;
+    margin: 0px;
+}
+
+tooltip label {
+    color: #F3F7F6;
+}
+
+
+/* =========================
+   WINDOW
+   ========================= */
+
+#window {
+    margin: 3px 15px 3px 0px;
+
+    padding: 2px 10px 0px 10px;
+
+    border-radius: 6px;
+
+    color: #F3F7F6;
+
+    font-weight: normal;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+
+/* =========================
+   TASKBAR
+   ========================= */
+
+#taskbar {
+    background: @backgroundlight;
+
+    margin: 3px 15px 3px 0px;
+    padding: 0px;
+
+    border-radius: 6px;
+
+    font-weight: normal;
+    font-style: normal;
+
+    border: 1px solid rgba(123, 211, 198, 0.25);
+}
+
+#taskbar button {
+    margin: 0;
+
+    border-radius: 6px;
+
+    padding: 0px 5px;
+}
+
+#taskbar.empty {
+    background: transparent;
+
+    border: 0;
+
+    padding: 0;
+    margin: 0;
+}
+
+
+/* =========================
+   MODULE POSITIONING
+   ========================= */
+
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
+
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0;
+}
+
+
+/* =========================
+   GENERAL MODULES
+   ========================= */
+
+#backlight,
+#backlight-slider,
+#battery,
+#bluetooth,
+#clock,
+#cpu,
+#disk,
+#idle_inhibitor,
+#keyboard-state,
+#memory,
+#mode,
+#mpris,
+#network,
+#power-profiles-daemon,
+#pulseaudio,
+#pulseaudio-slider,
+#taskbar button,
+#taskbar,
+#temperature,
+#tray,
+#window,
+#wireplumber,
+#workspaces,
+#custom-backlight,
+#custom-nightlight,
+#custom-browser,
+#custom-cava_mviz,
+#custom-cycle_wall,
+#custom-dot_update,
+#custom-file_manager,
+#custom-keybinds,
+#custom-keyboard,
+#custom-light_dark,
+#custom-nightlight,
+#custom-lock,
+#custom-hint,
+#custom-hypridle,
+#custom-menu,
+#custom-playerctl,
+#custom-power_vertical,
+#custom-power,
+#custom-quit,
+#custom-reboot,
+#custom-settings,
+#custom-spotify,
+#custom-swaync,
+#custom-tty,
+#custom-updater,
+#custom-hyprpicker,
+#custom-weather,
+#custom-weather.clearNight,
+#custom-weather.cloudyFoggyDay,
+#custom-weather.cloudyFoggyNight,
+#custom-weather.default,
+#custom-weather.rainyDay,
+#custom-weather.rainyNight,
+#custom-weather.severe,
+#custom-weather.showyIcyDay,
+#custom-weather.snowyIcyNight,
+#custom-weather.sunnyDay {
+    margin-right: 8px;
+    margin-left: 6px;
+
+    font-size: 100%;
+
+    color: @iconcolor;
+}
+
+
+/* =========================
+   NOTIFICATION
+   ========================= */
+
+#custom-swaync {
+    margin-left: 12px;
+}
+
+
+/* =========================
+   IDLE INHIBITOR
+   ========================= */
+
+#idle_inhibitor {
+    margin-right: 15px;
+
+    font-size: 102%;
+    font-weight: bold;
+
+    color: #C7D9D5;
+
+    border-bottom: 0px;
+}
+
+#idle_inhibitor.activated {
+    margin-right: 15px;
+
+    font-size: 100%;
+    font-weight: bold;
+
+    color: #39FF14;
+
+    background: rgba(57, 255, 20, 0.10);
+
+    border-radius: 6px;
+}
+
+
+/* =========================
+   MENU
+   ========================= */
+
+#custom-menu {
+    background-color: @backgrounddark;
+
+    color: #FFFFFF;
+
+    border-radius: 7px;
+
+    padding: 0px 10px;
+
+    margin: 2px 17px 2px 0px;
+
+    border: 1px solid @bordercolor;
+}
+
+
+/* =========================
+   POWER
+   ========================= */
+
+#custom-power {
+    background-color: @backgrounddark;
+
+    color: #FFFFFF;
+
+    border-radius: 7px;
+
+    padding: 0px 0px 0px 6px;
+
+    border: 1px solid @bordercolor;
+}
+
+
+/* =========================
+   KEYBINDS
+   ========================= */
+
+#custom-keybinds {
+    margin: 0px 13px 0px 0px;
+
+    padding: 0px;
+
+    color: #D5E5E2;
+}
+
+
+/* =========================
+   UPDATER
+   ========================= */
+
+#custom-updater {
+    background-color: @backgroundlight;
+
+    color: #F3F7F6;
+
+    border-radius: 6px;
+
+    padding: 2px 10px 0px 10px;
+
+    margin: 3px 15px 3px 0px;
+}
+
+#custom-updates.green {
+    background-color: @backgroundlight;
+}
+
+#custom-updates.yellow {
+    background-color: #04743E;
+
+    color: #FFFFFF;
+}
+
+#custom-updates.red {
+    background-color: #D64545;
+
+    color: #FFFFFF;
+}
+
+
+/* =========================
+   KEYBOARD STATE
+   ========================= */
+
+#keyboard-state {
+    margin-right: 10px;
+
+    color: #F3F7F6;
+}
+
+
+/* =========================
+   CLOCK
+   ========================= */
+
+#clock {
+    background-color: @backgrounddark;
+
+    color: #FFFFFF;
+
+    border-radius: 7px;
+
+    padding: 1px 12px 0px 12px;
+
+    margin: 3px 0px;
+
+    border: 1px solid @bordercolor;
+}
+
+
+/* =========================
+   BACKLIGHT
+   ========================= */
+
+#backlight {
+    background-color: @backgroundlight;
+
+    margin-left: 6px;
+
+    color: #E5F2EF;
+
+    border-radius: 6px;
+
+    padding: 2px 10px 0px 10px;
+
+    margin: 3px 15px 3px 0px;
+}
+
+
+/* =========================
+   AUDIO
+   ========================= */
+
+#pulseaudio {
+    background-color: @backgroundlight;
+
+    color: #E5F2EF;
+
+    border-radius: 6px;
+
+    padding: 2px 10px 0px 10px;
+
+    margin: 3px 15px 3px 0px;
+}
+
+#pulseaudio.muted {
+    background-color: @backgrounddark;
+
+    color: #9AAFAC;
+}
+
+
+/* =========================
+   NETWORK
+   ========================= */
+
+#network {
+    background-color: @backgroundlight;
+
+    color: #E5F2EF;
+
+    border-radius: 6px;
+
+    padding: 2px 10px 0px 10px;
+
+    margin: 3px 15px 3px 0px;
+}
+
+#network.ethernet,
+#network.wifi {
+    background-color: @backgroundlight;
+
+    color: #E5F2EF;
+}
+
+
+/* =========================
+   BLUETOOTH
+   ========================= */
+
+#bluetooth,
+#bluetooth.on,
+#bluetooth.connected {
+    background-color: @backgroundlight;
+
+    color: #E5F2EF;
+
+    border-radius: 6px;
+
+    padding: 2px 10px 0px 10px;
+
+    margin: 3px 15px 3px 0px;
+}
+
+#bluetooth.off {
+    background-color: transparent;
+
+    padding: 0px;
+    margin: 0px;
+}
+
+
+/* =========================
+   BATTERY
+   ========================= */
+
+#battery {
+    background-color: @backgroundlight;
+
+    color: #E5F2EF;
+
+    border-radius: 6px;
+
+    padding: 2px 15px 0px 10px;
+
+    margin: 3px 15px 3px 0px;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: #7BD3C6;
+
+    background-color: @backgroundlight;
+}
+
+#battery.warning {
+    color: #F5D76E;
+}
+
+#battery.critical:not(.charging) {
+    background-color: #D64545;
+
+    color: #FFFFFF;
+
+    animation-name: blink;
+
+    animation-duration: 3s;
+
+    animation-timing-function: steps(12);
+
+    animation-iteration-count: infinite;
+
+    animation-direction: alternate;
+}
+
+
+/* =========================
+   BLINK
+   ========================= */
+
+@keyframes blink {
+    to {
+        background-color: @backgrounddark;
+        color: #FFFFFF;
+    }
+}
+
+
+/* =========================
+   TRAY
+   ========================= */
+
+#tray {
+    padding: 0px 15px 0px 0px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+
+/* =========================
+   SLIDERS
+   ========================= */
+
+#backlight-slider slider,
+#pulseaudio-slider slider {
+    min-width: 0px;
+    min-height: 0px;
+
+    opacity: 0;
+
+    background-image: none;
+
+    border: none;
+
+    box-shadow: none;
+}
+
+#backlight-slider trough,
+#pulseaudio-slider trough {
+    min-width: 80px;
+    min-height: 5px;
+
+    border-radius: 5px;
+
+    background-color: rgba(10, 15, 14, 0.80);
+}
+
+#backlight-slider highlight,
+#pulseaudio-slider highlight {
+    min-height: 10px;
+
+    border-radius: 5px;
+
+    background-color: #08B89D;
+} 

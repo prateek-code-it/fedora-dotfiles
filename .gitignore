@@ -1,0 +1,26 @@
+# 1. Ignore everything by default
+/*
+
+# 2. Whitelist the config folders you want to track
+!/hypr/
+!/hypr/**
+!/rofi/
+!/rofi/**
+!/waybar/
+!/waybar/**
+!/kitty/
+!/kitty/**
+!/fastfetch/
+!/fastfetch/**
+!/dunst/
+!/dunst/**
+
+# 3. Track the gitignore file itself
+!.gitignore
+
+# 4. Security block
+*.log
+*.token
+*.key
+*.secret
+*credentials*

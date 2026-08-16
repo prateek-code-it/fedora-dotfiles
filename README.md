@@ -6,7 +6,7 @@ Personal dotfiles and system configurations for a keyboard-driven, Wayland-based
 
 ## 🛠️ Tech Stack & Core Tools
 
-* **OS:** Fedora Linux
+* **OS:** Fedora Linux 44
 * **Window Manager:** [Hyprland](https://hyprland.org/) (Wayland Compositor)
 * **Shell:** Zsh with [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 * **Terminal:** Kitty
@@ -34,11 +34,12 @@ Personal dotfiles and system configurations for a keyboard-driven, Wayland-based
 
 # Hyprland Shortcuts
 | Shortcut | Action | Description |
-|:--- | :---|:--- |
+|:--- | :---|:---: |
 | `Super + V` | Clipboard Menu | Search and paste from cliphist history via Rofi |
 | `Super + Shift + V` | Wipe Clipboard | Clear cliphist history database |
 | `Super + Enter` | Terminal | Open Kitty terminal session |
 | `Super + Q` | Kill Window | Close active focused client |
+| `Super + H` | Open Help | Open help window that contains all the shorcuts about the remaining shortcuts |
 
 ---
 

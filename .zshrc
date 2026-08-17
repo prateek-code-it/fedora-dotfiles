@@ -184,6 +184,14 @@ alias p10k='nvim ~/.p10k.zsh'
 alias reload='source ~/.zshrc'
 
 
+# ------------------------------------------------------------
+# Virtual Machine's SSH Access
+# ------------------------------------------------------------
+
+alias ccserver='ssh -p 2224 admin_master@127.0.0.1'
+alias debby='ssh -p 2226 debby@127.0.0.1'
+alias kali='ssh -p 2222 pratique@127.0.0.1'
+
 
 # ------------------------------------------------------------
 # Git

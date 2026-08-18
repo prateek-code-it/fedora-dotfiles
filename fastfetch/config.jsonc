@@ -10,7 +10,12 @@
     }
   },
   "display": {
-    "separator": "  "
+    "separator": "  ",
+    "pipe": false,
+    "color": {
+      "keys": "cyan",
+      "title": "blue"
+    }
   },
   "modules": [
     {

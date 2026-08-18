@@ -89,6 +89,7 @@ export PAGER="less"
 # ------------------------------------------------------------
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH=$PATH:/home/patrik/.spicetify
 
 if [[ -d "$HOME/.cargo/bin" ]]; then
     export PATH="$HOME/.cargo/bin:$PATH"
@@ -393,4 +394,7 @@ alias helpc2='myaliases'
 #  --logo-width 24 \
 #  --logo-height 12
 
-export PATH=$PATH:/home/patrik/.spicetify
+
+
+
+fastfetch

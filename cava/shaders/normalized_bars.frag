@@ -1,0 +1,1 @@
+/home/patrik/dotfiles/.config/cava/shaders/normalized_bars.frag

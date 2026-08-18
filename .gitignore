@@ -17,7 +17,8 @@
 !/dunst/**
 !/spicetfy/
 !/spicetfy/**
-
+!/cava/
+!/cava/**
 
 # 3. Track the gitignore file itself
 !.gitignore

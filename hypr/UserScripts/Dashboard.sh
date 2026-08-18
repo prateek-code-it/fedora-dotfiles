@@ -10,7 +10,7 @@ kitty --class cava-term -e cava &
 sleep 0.2
 
 # Open fastfetch on top right
-kitty --class fetch-term -e zsh -c "fastfetch; exec zsh" &
+kitty --class fetch-term -e zsh -c "exec zsh" &
 sleep 0.2
 
 # Open clock on bottom right

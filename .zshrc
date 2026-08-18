@@ -392,3 +392,5 @@ alias helpc2='myaliases'
 #  --logo ~/.config/fastfetch/fedora.png \
 #  --logo-width 24 \
 #  --logo-height 12
+
+export PATH=$PATH:/home/patrik/.spicetify

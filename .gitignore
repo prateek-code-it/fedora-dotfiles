@@ -15,6 +15,9 @@
 !/fastfetch/**
 !/dunst/
 !/dunst/**
+!/spicetfy/
+!/spicetfy/**
+
 
 # 3. Track the gitignore file itself
 !.gitignore
@@ -28,3 +31,4 @@
 !.zshrc
 !README.md
 !install.sh
+

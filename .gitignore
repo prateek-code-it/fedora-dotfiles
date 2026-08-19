@@ -29,7 +29,10 @@
 !/vmcopy/**
 !/wallust/
 !/wallust/**
-
+!/sway/
+!/sway/**
+!/swaync/
+!/swaync/**
 
 
 

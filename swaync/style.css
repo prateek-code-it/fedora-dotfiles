@@ -1,5 +1,270 @@
-/* ----------- 💫 https://github.com/JaKooLit 💫 -------- */
-/* swaync colors - wallust from waybar.css */
+/* ----------- Samsung One UI Style for SwayNC ----------- */
+@import '../../.config/waybar/wallust/colors-waybar.css';
+
+/* ----------- Slate DARK Theme --------------- 
+@define-color noti-border-color rgba(255, 255, 255, 0.08);
+@define-color oneui-bg rgba(18, 19, 26, 0.94);
+@define-color oneui-card rgba(255, 255, 255, 0.06);
+@define-color oneui-card-hover rgba(255, 255, 255, 0.12);
+@define-color oneui-accent @color12;
+@define-color text-color #e1e2e7;
+@define-color text-muted #8a8f9d;
+*/ 
+
+/*----------------------- deep OLED Black Theme  
+@define-color noti-border-color alpha(@color12, 0.3);
+@define-color oneui-bg rgba(10, 10, 12, 0.96);
+@define-color oneui-card rgba(255, 255, 255, 0.05);
+@define-color oneui-card-hover rgba(255, 255, 255, 0.10);
+@define-color oneui-accent @color12;
+@define-color text-color #ffffff;
+@define-color text-muted rgba(255, 255, 255, 0.6);
+*/ 
+
+/*-----------------Glass/Nord Blue -----------------*/ 
+@define-color noti-border-color rgba(136, 192, 208, 0.25);
+@define-color oneui-bg rgba(24, 28, 37, 0.92);
+@define-color oneui-card rgba(46, 52, 64, 0.65);
+@define-color oneui-card-hover rgba(59, 66, 82, 0.85);
+@define-color oneui-accent #88c0d0;
+@define-color text-color #eceff4;
+@define-color text-muted #d8dee9;
+
+
+
+
+
+* {
+    font-family: "JetBrains Mono Nerd Font", "Inter", sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* --- Control Center Container --- */
+.control-center {
+    background: @oneui-bg;
+    border: 1px solid @noti-border-color;
+    border-radius: 26px;
+    padding: 14px;
+    margin: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75);
+}
+
+.control-center-list {
+    background: transparent;
+}
+
+/* --- Notification Popups & Cards --- */
+.notification-row {
+    outline: none;
+    margin: 6px 0;
+}
+
+.notification {
+    background: @oneui-card;
+    padding: 12px 14px;
+    border-radius: 20px;
+    border: 1px solid @noti-border-color;
+}
+
+.notification:hover {
+    background: @oneui-card-hover;
+}
+
+.summary {
+    font-size: 1rem;
+    font-weight: 700;
+    color: @text-color;
+}
+
+.time {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: @text-muted;
+    margin-right: 12px;
+}
+
+.body {
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: @text-muted;
+    margin-top: 4px;
+}
+
+.close-button {
+    background: rgba(247, 118, 142, 0.25);
+    color: #f7768e;
+    padding: 4px;
+    border-radius: 50%;
+    margin-top: 4px;
+    margin-right: 4px;
+}
+
+.close-button:hover {
+    background: #f7768e;
+    color: @oneui-bg;
+}
+
+/* --- Header / Clear All --- */
+.widget-title {
+    color: @text-color;
+    background: transparent;
+    padding: 4px 8px;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.widget-title > button {
+    font-size: 0.8rem;
+    color: @text-color;
+    border-radius: 18px;
+    background: @oneui-card;
+    border: 1px solid @noti-border-color;
+    padding: 4px 12px;
+}
+
+.widget-title > button:hover {
+    background: @oneui-accent;
+    color: @oneui-bg;
+}
+
+/* --- One UI Quick Toggle Grid --- */
+.widget-buttons-grid {
+    background: @oneui-card;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 22px;
+    border: 1px solid @noti-border-color;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button {
+    margin: 4px;
+    min-height: 48px;
+    min-width: 48px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    border: 1px solid transparent;
+    color: @text-color;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:hover {
+    background: @oneui-accent;
+    color: @oneui-bg;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild > button:checked {
+    background: @oneui-accent;
+    color: @oneui-bg;
+}
+
+/* --- Samsung Pill Sliders (Volume & Brightness) --- */
+.widget-volume,
+.widget-backlight {
+    background: @oneui-card;
+    padding: 8px 14px;
+    margin: 6px 0;
+    border-radius: 20px;
+    border: 1px solid @noti-border-color;
+    color: @text-color;
+}
+
+.widget-volume > box > button,
+.widget-backlight > box > button {
+    background: transparent;
+    border: none;
+    color: @oneui-accent;
+}
+
+scale trough {
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.12);
+    min-height: 12px;
+}
+
+scale highlight {
+    border-radius: 14px;
+    background: @oneui-accent;
+}
+
+scale slider {
+    background: transparent;
+    box-shadow: none;
+    min-width: 0;
+    min-height: 0;
+}
+
+/* --- MPRIS / Media Player Card --- */
+.widget-mpris {
+    background: @oneui-card;
+    padding: 10px 14px;
+    margin: 8px 0;
+    border-radius: 22px;
+    border: 1px solid @noti-border-color;
+    color: @text-color;
+}
+
+.widget-mpris-player {
+    padding: 4px;
+}
+
+.widget-mpris-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.widget-mpris-subtitle {
+    font-weight: 400;
+    font-size: 0.8rem;
+    color: @text-muted;
+}
+
+.widget-mpris > box > button {
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    color: @text-color;
+    padding: 6px;
+    margin: 2px;
+}
+
+.widget-mpris > box > button:hover {
+    background: @oneui-accent;
+    color: @oneui-bg;
+}
+
+/* --- DND Switch --- */
+.widget-dnd {
+    background: @oneui-card;
+    padding: 8px 14px;
+    margin: 6px 0;
+    border-radius: 20px;
+    border: 1px solid @noti-border-color;
+    color: @text-color;
+}
+
+.widget-dnd > switch {
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+}
+
+.widget-dnd > switch:checked {
+    background: @oneui-accent;
+}
+
+.widget-dnd > switch slider {
+    background: #ffffff;
+    border-radius: 50%;
+    margin: 2px;
+}
+
+
+
+
+
+
+
+/* ----------- 💫 https://github.com/JaKooLit 💫 -------- $/
+/* swaync colors - wallust from waybar.css $/
 
 @import '../../.config/waybar/wallust/colors-waybar.css';
 
@@ -8,6 +273,8 @@
 @define-color noti-bg-alt @background-alt;
 @define-color noti-bg-hover @background;
 @define-color text-color @foreground;
+
+
 
 * {
     font-family: "JetBrains Mono Nerd Font";
@@ -27,7 +294,7 @@
 }
 
 .notification {
-	/*color: @text-color;*/
+	/*color: @text-color;$/
     background: @noti-bg;
     padding: 3px 10px 3px 6px;
     border-radius: 10px;
@@ -194,7 +461,7 @@
 	border: 0.5px solid @noti-border-color;
 }
 
-/* clear button */
+/* clear button $/
 .widget-title>button:hover {
     background: @text-color;
     color: red;
@@ -281,7 +548,7 @@
     color: @text-color
 }
 
-/* individual buttons */
+/* individual buttons $/
 .widget-buttons-grid>flowbox>flowboxchild>button:hover {
     background: @text-color;
     color: @noti-bg-hover
@@ -327,3 +594,5 @@
     font-size: x-large;
     color: @text-color
 }
+
+*/

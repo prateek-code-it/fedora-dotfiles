@@ -1,0 +1,1 @@
+/home/patrik/dotfiles/.config/yazi/.github/README.md

@@ -1,51 +1,90 @@
 # 1. Ignore everything by default
 /*
 
-# 2. Whitelist the config folders you want to track
+# 2. Hyprland & Core Desktop UI
 !/hypr/
 !/hypr/**
-!/lists/
-!/rofi/
-!/rofi/**
 !/waybar/
 !/waybar/**
-!/kitty/
-!/kitty/**
-!/fastfetch/
-!/fastfetch/**
-!/dunst/
-!/dunst/**
-!/spicetfy/
-!/spicetfy/**
-!/cava/
-!/cava/**
-!/KDE/
-!/KDE/**
-!/nvim/
-!/nvim/**
-!/panel-colorizer/
-!/panel-colorizer/**
-!/vmcopy/
-!/vmcopy/**
-!/wallust/
-!/wallust/**
-!/sway/
-!/sway/**
+!/rofi/
+!/rofi/**
 !/swaync/
 !/swaync/**
+!/wlogout/
+!/wlogout/**
+!/wallust/
+!/wallust/**
+!/panel-colorizer/
+!/panel-colorizer/**
+!/matugen/
+!/matugen/**
+!/quickshell/
+!/quickshell/**
 
+# 3. Theming & Displays (GTK / Qt)
+!/gtk-3.0/
+!/gtk-3.0/**
+!/gtk-4.0/
+!/gtk-4.0/**
+!/qt5ct/
+!/qt5ct/**
+!/qt6ct/
+!/qt6ct/**
+!/Kvantum/
+!/Kvantum/**
+!/nwg-look/
+!/nwg-look/**
+!/nwg-displays/
+!/nwg-displays/**
 
+# 4. Terminals, Shells & CLI Utilities
+!/kitty/
+!/kitty/**
+!/ghostty/
+!/ghostty/**
+!/wezterm/
+!/wezterm/**
+!/nvim/
+!/nvim/**
+!/fastfetch/
+!/fastfetch/**
+!/cava/
+!/cava/**
+!/btop/
+!/btop/**
+!/yazi/
+!/yazi/**
+!/bat/
+!/bat/**
+!/starship/
+!/starship/**
+!starship.toml
+!/zshrc.d/
+!/zshrc.d/**
+!p10k.zsh
+!.zshrc
 
-# 3. Track the gitignore file itself
+# 5. Screenshots, Audio & Tools
+!/swappy/
+!/swappy/**
+!/satty/
+!/satty/**
+!/spicetify/
+!/spicetify/**
+!/lists/
+!/lists/**
+!/vmcopy/
+!/vmcopy/**
+
+# 6. Repo Management & Scripts
 !.gitignore
+!README.md
+!install.sh
 
-# 4. Security block
+# 7. Security Exclusions
 *.log
 *.token
 *.key
 *.secret
 *credentials*
-!.zshrc
-!README.md
-!install.sh
-!p10k.zsh
+*.db

@@ -19,6 +19,19 @@
 !/spicetfy/**
 !/cava/
 !/cava/**
+!/KDE/
+!/KDE/**
+!/nvim/
+!/nvim/**
+!/panel-colorizer/
+!/panel-colorizer/**
+!/vmcopy/
+!/vmcopy/**
+!/wallust/
+!/wallust/**
+
+
+
 
 # 3. Track the gitignore file itself
 !.gitignore

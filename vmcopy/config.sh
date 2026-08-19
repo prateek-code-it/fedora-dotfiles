@@ -21,7 +21,7 @@ mkdir -p "${SSH_CONTROL_DIR}"
 # Virtual Machine Inventory
 # Format: "key|Display Name|Username|SSH Port|Home Directory"
 VMS=(
-  "kali|Kali Linux|pratique|2222|/home/pratikue"
+  "kali|Kali Linux|pratique|2222|/home/pratique"
   "debby|Debby Linux|debby|2226|/home/debby"
   "ccserver|Club Central Server|admin_master|2224|/home/admin_master"
 )

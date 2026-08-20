@@ -63,7 +63,7 @@
 .notification {
     background: @oneui-card;
     padding: 12px 14px;
-    border-radius: 20px;
+    border-radius: 100px;
     border: 1px solid @noti-border-color;
 }
 
@@ -134,13 +134,13 @@
     padding: 10px;
     margin: 8px 0;
     border-radius: 22px;
-    border: 1px solid @noti-border-color;
+    border: 2px solid @noti-border-color;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button {
     margin: 4px;
-    min-height: 48px;
-    min-width: 48px;
+    min-height: 80px;
+    min-width: 80px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 50%;
     border: 1px solid transparent;
@@ -164,7 +164,7 @@
     padding: 8px 14px;
     margin: 6px 0;
     border-radius: 20px;
-    border: 1px solid @noti-border-color;
+    border: 2px solid @noti-border-color;
     color: @text-color;
 }
 

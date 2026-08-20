@@ -30,7 +30,7 @@
   {
     "type": "command",
     "key": " ├  ",
-    "format": "echo JaKooLit Version: ${DOTS_VERSION}",
+    "text": "echo JaKooLit Version: ${DOTS_VERSION}",
     "keyColor": "31"
   },
   {

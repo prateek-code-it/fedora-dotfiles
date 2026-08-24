@@ -6,22 +6,22 @@
   "control-center-layer": "top",
   "layer-shell": true,
   "cssPriority": "user",
-  "control-center-margin-top": 5,
-  "control-center-margin-bottom": 0,
-  "control-center-margin-right": 0,
+  "control-center-margin-top": 10,
+  "control-center-margin-bottom": 10,
+  "control-center-margin-right": 10,
   "control-center-margin-left": 0,
   "notification-2fa-action": true,
-  "notification-inline-replies": false,
-  "notification-icon-size": 24,
+  "notification-inline-replies": true,
+  "notification-icon-size": 48,
   "notification-body-image-height": 100,
-  "notification-body-image-width": 100,
-  "notification-window-width": 200,
-  "timeout": 3,
-  "timeout-low": 5,
+  "notification-body-image-width": 200,
+  "notification-window-width": 380,
+  "timeout": 6,
+  "timeout-low": 3,
   "timeout-critical": 0,
-  "fit-to-screen": false,
-  "control-center-width": 450,
-  "control-center-height": 720,
+  "fit-to-screen": true,
+  "control-center-width": 420,
+  "control-center-height": 700,
   "keyboard-shortcuts": true,
   "image-visibility": "when-available",
   "transition-time": 200,
@@ -29,64 +29,91 @@
   "hide-on-action": true,
   "script-fail-notify": true,
   "widgets": [
-      "buttons-grid",
-      "mpris",
-      "volume", 
-      "backlight",
-      "dnd",
-      "title",
-      "notifications"
+    "buttons-grid",
+    "mpris",
+    "volume",
+    "backlight",
+    "dnd",
+    "title",
+    "notifications"
   ],
   "widget-config": {
-      "title": {
-          "text": "Notifications",
-          "clear-all-button": true,
-          "button-text": "Clear"
-      },
-      "dnd": {
-          "text": "Do Not Disturb"
-      },
-      "label": {
-          "max-lines": 1,
-          "text": "Notification"
-      },
-      "mpris": {
-          "image-size": 96,
-          "image-radius": 8
-      },
-      "volume": {
-          "label": "󰕾"
-      },
-      "backlight": {
-          "label": "󰃟"
-      },
-      "buttons-grid": {
-          "actions": [
-              {
-                  "label": "󰐥",
-                  "command": "bash -c $HOME/.config/hypr/scripts/Wlogout.sh"
-              },
-              {
-                  "label": "󰌾",
-                  "command": "bash -c $HOME/.config/hypr/scripts/LockScreen.sh"
-              },
-              {
-                  "label": "󰍃",
-                  "command": "hyprctl dispatch exit"
-              },
-              {
-                  "label": "󰀝",
-                  "command": "bash -c $HOME/.config/hypr/scripts/AirplaneMode.sh"
-              },
-              {
-                  "label": "󰝟",
-                  "command": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-              },
-              {
-                  "label": "󰂯",
-                  "command": "blueman-manager"
-              }
-          ]
-      }
+    "title": {
+      "text": "Notifications",
+      "clear-all-button": true,
+      "button-text": "Clear All"
+    },
+    "dnd": {
+      "text": "Do Not Disturb"
+    },
+    "mpris": {
+      "image-size": 72,
+      "image-radius": 12
+    },
+    "volume": {
+      "label": "󰕾"
+    },
+    "backlight": {
+      "label": "󰃟"
+    },
+    "buttons-grid": {
+      "buttons-per-row": 3,
+      "actions": [
+        {
+          "label": "󰐥",
+          "tooltip": "Power Menu",
+          "type": "button",
+          "command": "$HOME/.config/hypr/scripts/Wlogout.sh"
+        },
+        {
+          "label": "",
+          "tooltip": "Lock Screen",
+          "type": "button",
+          "command": "hyprlock"
+        },
+        {
+          "label": "󰤨",
+          "tooltip": "Wi-Fi Settings",
+          "type": "button",
+          "command": "$HOME/.config/hypr/scripts/RofiWifi.sh"
+        },
+        {
+          "label": "󰖂",
+          "tooltip": "Cloudflare WARP VPN",
+          "type": "button",
+          "command": "sh -c 'if warp-cli status | grep -q Connected; then warp-cli disconnect; else warp-cli connect; fi'"
+        },
+        {
+          "label": "󰂯",
+          "tooltip": "Bluetooth Settings",
+          "type": "button",
+          "command": "$HOME/.config/hypr/scripts/RofiBluetooth.sh"
+        },
+        {
+          "label": "",
+          "tooltip": "Spotify",
+          "type": "button",
+          "command": "spotify || flatpak run com.spotify.Client"
+        },
+        {
+          "label": "󰎆",
+          "tooltip": "RofiBeats",
+          "type": "button",
+          "command": "$HOME/.config/hypr/UserScripts/RofiBeats.sh"
+        },
+        {
+          "label": "󰌌",
+          "tooltip": "On-Screen Keyboard",
+          "type": "button",
+          "command": "sh -c 'if pgrep -x wvkbd-mobintl; then pkill -x wvkbd-mobintl; else wvkbd-mobintl -L 300 & fi'"
+        },
+        {
+          "label": "󰈈",
+          "tooltip": "HP Sure View (Privacy Screen)",
+          "type": "button",
+          "command": "brightnessctl -d 'hp_privacy_screen' set 1+!"
+        }
+      ]
+    }
   }
 }

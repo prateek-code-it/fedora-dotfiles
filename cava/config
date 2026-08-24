@@ -68,14 +68,14 @@ source = auto
 ; foreground = default
 gradient = 1
 gradient_count = 8
-gradient_color_1 = '#3D3E3E'
-gradient_color_2 = '#4B3F22'
-gradient_color_3 = '#424951'
-gradient_color_4 = '#8291A2'
-gradient_color_5 = '#E4D6BE'
-gradient_color_6 = '#8796A8'
-gradient_color_7 = '#ADC1D8'
-gradient_color_8 = '#E4D6BE'
+gradient_color_1 = '#393A3C'
+gradient_color_2 = '#26454A'
+gradient_color_3 = '#3D6D71'
+gradient_color_4 = '#787366'
+gradient_color_5 = '#EAC8B5'
+gradient_color_6 = '#5BA4A7'
+gradient_color_7 = '#A09988'
+gradient_color_8 = '#EAC8B5'
 
 [smoothing]
 ; integral = 77

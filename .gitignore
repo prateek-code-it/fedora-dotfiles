@@ -76,6 +76,7 @@
 !/vmcopy/
 !/vmcopy/**
 
+
 # 6. Repo Management & Scripts
 !.gitignore
 !README.md
@@ -88,3 +89,7 @@
 *.secret
 *credentials*
 *.db
+
+# 8. Cosmic Setup
+!/cosmic/
+!/cosmic/**

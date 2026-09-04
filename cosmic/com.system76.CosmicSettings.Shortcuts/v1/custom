@@ -1,0 +1,18 @@
+{
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "Return",
+        description: Some("Open Terminal"),
+    ): Spawn("cosmic-term"),
+    (
+        modifiers: [
+            Super,
+        ],
+    ): System(AppLibrary),
+    (
+        modifiers: [],
+        key: "Home",
+    ): Minimize,
+}

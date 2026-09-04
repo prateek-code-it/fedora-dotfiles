@@ -1,5 +1,9 @@
 
 {
+    # =========================================================
+    # Existing COSMIC shortcuts
+    # =========================================================
+
     (
         modifiers: [
             Super,
@@ -19,68 +23,55 @@
         key: "Home",
     ): Minimize,
 
+
+    # =========================================================
+    # HP EliteBook 1040 G7 x360
+    # =========================================================
+
+    # Display / external monitor
     (
         modifiers: [],
         key: "XF86Display",
         description: Some("Display Settings"),
     ): Spawn("nwg-displays"),
 
+    # HP programmable key
     (
         modifiers: [],
         key: "XF86Launch8",
         description: Some("VPN"),
     ): Spawn("bash /home/patrik/.config/hypr/scripts/vpn.sh"),
 
+
+    # =========================================================
+    # EVOFOX FireBlade
+    # =========================================================
+
+    # Tools key
     (
         modifiers: [],
         key: "XF86Tools",
         description: Some("Online Music"),
     ): Spawn("/home/patrik/.config/hypr/UserScripts/RofiBeats.sh"),
 
+    # Calculator key — EVOFOX reports this as XF86AudioStop
+    (
+        modifiers: [],
+        key: "XF86AudioStop",
+        description: Some("Calculator"),
+    ): Spawn("/home/patrik/.config/hypr/UserScripts/RofiCalc.sh"),
+
+    # Mail key
     (
         modifiers: [],
         key: "XF86Mail",
         description: Some("Open Mail"),
     ): Spawn("thunderbird"),
 
+    # Home/browser key
     (
         modifiers: [],
         key: "XF86HomePage",
         description: Some("Notification Panel"),
     ): Spawn("swaync-client -t -sw"),
-
-    (
-        modifiers: [],
-        key: "XF86AudioMute",
-        description: Some("Audio Mute"),
-    ): Spawn("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
-
-    (
-        modifiers: [],
-        key: "F8",
-        description: Some("Mic Mute"),
-    ): Spawn("/home/patrik/.config/hypr/scripts/toggle-mic.sh"),
-
-    (
-        modifiers: [],
-        key: "Print",
-        description: Some("Screenshot"),
-    ): Spawn("/home/patrik/.config/hypr/UserScripts/QuickEdit.sh"),
-
-    (
-        modifiers: [
-            Super,
-            Alt,
-        ],
-        key: "/",
-        description: Some("Toggle Display Rotation"),
-    ): Spawn("/home/patrik/.config/hypr/UserScripts/toggle-rotate.sh"),
-
-    (
-        modifiers: [
-            Super,
-        ],
-        key: "Home",
-        description: Some("Dashboard"),
-    ): Spawn("/home/patrik/.config/hypr/UserScripts/Dashboard.sh"),
 }

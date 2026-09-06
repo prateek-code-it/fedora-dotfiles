@@ -1,77 +1,7 @@
-
 {
-    # =========================================================
-    # Existing COSMIC shortcuts
-    # =========================================================
-
-    (
-        modifiers: [
-            Super,
-        ],
-        key: "Return",
-        description: Some("Open Terminal"),
-    ): Spawn("cosmic-term"),
-
     (
         modifiers: [
             Super,
         ],
     ): System(AppLibrary),
-
-    (
-        modifiers: [],
-        key: "Home",
-    ): Minimize,
-
-
-    # =========================================================
-    # HP EliteBook 1040 G7 x360
-    # =========================================================
-
-    # Display / external monitor
-    (
-        modifiers: [],
-        key: "XF86Display",
-        description: Some("Display Settings"),
-    ): Spawn("nwg-displays"),
-
-    # HP programmable key
-    (
-        modifiers: [],
-        key: "XF86Launch8",
-        description: Some("VPN"),
-    ): Spawn("bash /home/patrik/.config/hypr/scripts/vpn.sh"),
-
-
-    # =========================================================
-    # EVOFOX FireBlade
-    # =========================================================
-
-    # Tools key
-    (
-        modifiers: [],
-        key: "XF86Tools",
-        description: Some("Online Music"),
-    ): Spawn("/home/patrik/.config/hypr/UserScripts/RofiBeats.sh"),
-
-    # Calculator key — EVOFOX reports this as XF86AudioStop
-    (
-        modifiers: [],
-        key: "XF86AudioStop",
-        description: Some("Calculator"),
-    ): Spawn("/home/patrik/.config/hypr/UserScripts/RofiCalc.sh"),
-
-    # Mail key
-    (
-        modifiers: [],
-        key: "XF86Mail",
-        description: Some("Open Mail"),
-    ): Spawn("thunderbird"),
-
-    # Home/browser key
-    (
-        modifiers: [],
-        key: "XF86HomePage",
-        description: Some("Notification Panel"),
-    ): Spawn("swaync-client -t -sw"),
 }

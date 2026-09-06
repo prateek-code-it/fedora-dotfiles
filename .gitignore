@@ -20,6 +20,8 @@
 !/matugen/**
 !/quickshell/
 !/quickshell/**
+!/cosmic/
+!/cosmic/**
 
 # 3. Theming & Displays (GTK / Qt)
 !/gtk-3.0/
@@ -44,6 +46,8 @@
 !/ghostty/**
 !/wezterm/
 !/wezterm/**
+!/foot/
+!/foot/**
 !/nvim/
 !/nvim/**
 !/fastfetch/
@@ -63,6 +67,18 @@
 !/zshrc.d/**
 !p10k.zsh
 !.zshrc
+!/fish/
+!/fish/**
+!/tmux/
+!/tmux/**
+!/tmuxp/
+!/tmuxp/**
+!/atuin/
+!/atuin/**
+!/lazygit/
+!/lazygit/**
+!/lazydocker/
+!/lazydocker/**
 
 # 5. Screenshots, Audio & Tools
 !/swappy/
@@ -71,25 +87,25 @@
 !/satty/**
 !/spicetify/
 !/spicetify/**
+!/easyeffects/
+!/easyeffects/**
+!/fuzzel/
+!/fuzzel/**
 !/lists/
 !/lists/**
 !/vmcopy/
 !/vmcopy/**
-
 
 # 6. Repo Management & Scripts
 !.gitignore
 !README.md
 !install.sh
 
-# 7. Security Exclusions
+# 7. Security & Cache Exclusions
 *.log
 *.token
 *.key
 *.secret
 *credentials*
 *.db
-
-# 8. Cosmic Setup
-!/cosmic/
-!/cosmic/**
+*.tmp

@@ -1,0 +1,1 @@
+/home/patrik/dotfiles/.config/fish/conf.d/mise.fish

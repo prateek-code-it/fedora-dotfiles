@@ -1,0 +1,1 @@
+/home/patrik/dotfiles/.config/fish/functions/l.fish

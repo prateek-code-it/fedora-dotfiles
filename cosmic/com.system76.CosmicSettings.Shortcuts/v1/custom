@@ -4,4 +4,21 @@
             Super,
         ],
     ): System(AppLibrary),
+    (
+        modifiers: [
+            Super,
+        ],
+        key: "F11",
+    ): Disable,
+    (
+        modifiers: [
+            Super,
+            Shift,
+        ],
+        key: "m",
+    ): Minimize,
+    (
+        modifiers: [],
+        key: "F11",
+    ): Fullscreen,
 }

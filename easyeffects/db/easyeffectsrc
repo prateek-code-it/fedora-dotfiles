@@ -7,6 +7,7 @@ blocklist=bluez_input.C0_D5_E2_23_48_A6.0,Firefox,Brave,bluez_input.C0_D5_E2_23_
 outputDevice=alsa_output.usb-Generic_AB13X_USB_Audio_20210926172016-00.iec958-stereo
 plugins=bass_loudness#0,equalizer#0,reverb#0,bass_enhancer#0
 showBlocklistedApps=true
+visiblePage=pluginsPage
 visiblePlugin=reverb#0
 
 [Style]

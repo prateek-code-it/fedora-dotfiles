@@ -101,7 +101,11 @@
 !README.md
 !install.sh
 
-# 7. Security & Cache Exclusions
+# 7.Terminal files 
+!.zshrc
+!.bashrc
+
+# 8. Security & Cache Exclusions
 *.log
 *.token
 *.key

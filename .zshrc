@@ -328,91 +328,132 @@ alias empty='echo -n >'
 # ------------------------------------------------------------
 # System
 # ------------------------------------------------------------
+update_firmware() {
+  # Define ANSI Color Codes
+  local RED='\033[0;31m'
+  local GREEN='\033[0;32m'
+  local YELLOW='\033[1;33m'
+  local BLUE='\033[0;34m'
+  local NC='\033[0m' # No Color
 
-sysupdate() {
-  echo "📦 Updating system packages..."
-  sudo dnf upgrade --refresh -y
-  echo " \033[0;5m DNF DONE ... :-D" | lolcat
-  sleep 1
-  if command -v flatpak &>/dev/null; then
-    echo "📦 Updating Flatpaks..."
-    flatpak update -y 
-    echo "\033[0;5m Flatpaks DONE .. :-D" | lolcat
-    sleep 1
+  echo -e "${BLUE}=== Starting System Firmware Update ===${NC}\n"
+
+  # 1. Verify that fwupdmgr is installed
+  if ! command -v fwupdmgr &> /dev/null; then
+    echo -e "${RED}[ERROR] 'fwupdmgr' is not installed.${NC}"
+    echo -e "Please install it via your package manager (e.g., sudo dnf install fwupd)."
+    return 1
   fi
-  echo "\033[0;5m [!] Cleaning the extra..." | lolcat
-  cleanup | lolcat
-  fpclean | lolcat
-  sleep 1
-  echo "📦 Updating Firmware...."
-  update_firmware
- 
-  echo "✅ System update complete."
+
+  # 2. Refresh metadata from Linux Vendor Firmware Service (LVFS)
+  echo -e "${YELLOW}[1/4] Refreshing device metadata from LVFS...${NC}"
+  if fwupdmgr refresh --force ; then
+    echo -e "${GREEN}-> Metadata successfully refreshed.${NC}\n"
+  else
+    echo -e "${RED}[WARNING] Failed to refresh metadata. Continuing with cached data...${NC}\n"
+  fi
+
+  # 3. Check for available firmware updates
+  echo -e "${YELLOW}[2/4] Checking for available firmware updates...${NC}"
+  fwupdmgr get-updates
+  local cmd_status=$?
+
+  if [ $cmd_status -ne 0 ]; then
+    echo -e "\n${GREEN}[INFO] Your system firmware is fully up to date!${NC}"
+    return 0
+  fi
+
+  # 4. Prompt user for confirmation before applying
+  echo -e "\n${YELLOW}[3/4] Firmware updates found!${NC}"
+  read -rp "Do you want to proceed with applying updates? (y/N): " confirm
+  if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
+    echo -e "${RED}Firmware update canceled by user.${NC}"
+    return 1
+  fi
+
+  # 5. Apply the updates
+  echo -e "\n${YELLOW}[4/4] Applying firmware updates...${NC}"
+  echo -e "${RED}Do NOT turn off or unplug your computer during this process!${NC}\n"
+  
+  if fwupdmgr update; then
+    echo -e "\n${GREEN}=== Firmware Update Complete ===${NC}"
+    read -rp "A system restart may be required to complete installation. Reboot now? (y/N): " reboot_confirm
+    if [[ "$reboot_confirm" =~ ^[Yy]$ ]]; then
+      echo -e "${BLUE}Rebooting system...${NC}"
+      sudo reboot
+    else
+      echo -e "${YELLOW}Please remember to restart your system manually later.${NC}"
+    fi
+    return 0
+  else
+    echo -e "\n${RED}[ERROR] Firmware update encountered an issue.${NC}"
+    return 1
+  fi
 }
 
-update_firmware() {
-    # Define ANSI Color Codes
-    local RED='\033[0;31m'
-    local GREEN='\033[0;32m'
-    local YELLOW='\033[1;33m'
-    local BLUE='\033[0;34m'
-    local NC='\033[0m' # No Color
+sysupdate() {
+  # Define ANSI Color Codes
+  local RED='\033[0;31m'
+  local GREEN='\033[0;32m'
+  local YELLOW='\033[1;33m'
+  local BLUE='\033[0;34m'
+  local NC='\033[0m' # No Color
 
-    echo -e "${BLUE}=== Starting System Firmware Update ===${NC}\n"
+  local failed_steps=()
 
-    # 1. Verify that fwupdmgr is installed
-    if ! command -v fwupdmgr &> /dev/null; then
-        echo -e "${RED}[ERROR] 'fwupdmgr' is not installed.${NC}"
-        echo -e "Please install it via your package manager (e.g., sudo dnf install fwupd / sudo apt install fwupd)."
-        return 1
-    fi
+  echo -e "${BLUE}=== Starting Full System Update ===${NC}\n"
 
-    # 2. Refresh metadata from Linux Vendor Firmware Service (LVFS)
-    echo -e "${YELLOW}[1/4] Refreshing device metadata from LVFS...${NC}"
-    if fwupdmgr refresh --force ; then
-        echo -e "${GREEN}-> Metadata successfully refreshed.${NC}\n"
+  # 1. DNF Upgrade
+  echo -e "${YELLOW}[1/4] Updating system packages via DNF...${NC}"
+  if ! sudo dnf upgrade --refresh -y; then
+    failed_steps+=("DNF System Packages Upgrade")
+    echo -e "${RED}[ERROR] DNF package upgrade encountered issues.${NC}"
+  else
+    echo -e "DNF DONE ... :-D" | lolcat
+  fi
+  sleep 1
+
+  # 2. Flatpak Update
+  if command -v flatpak &>/dev/null; then
+    echo -e "\n${YELLOW}[2/4] Updating Flatpaks...${NC}"
+    if ! flatpak update -y; then
+      failed_steps+=("Flatpak Updates")
+      echo -e "${RED}[ERROR] Flatpak update encountered issues.${NC}"
     else
-        echo -e "${RED}[WARNING] Failed to refresh metadata. Continuing with cached data...${NC}\n"
+      echo -e "Flatpaks DONE .. :-D" | lolcat
     fi
+    sleep 1
+  else
+    echo -e "\n${YELLOW}[2/4] Flatpak not found. Skipping...${NC}"
+  fi
 
-    # 3. Check for available firmware updates
-    echo -e "${YELLOW}[2/4] Checking for available firmware updates...${NC}"
-    fwupdmgr get-updates
+  # 3. System Cleanup
+  echo -e "\n${YELLOW}[3/4] Cleaning extra system caches...${NC}"
+  if command -v cleanup &>/dev/null; then
+    cleanup | lolcat
+  fi
+  if command -v fpclean &>/dev/null; then
+    fpclean | lolcat
+  fi
+  sleep 1
 
-    local cmd_status=$?
-    if [ $cmd_status -ne 0 ]; then
-        echo -e "\n${GREEN}\033[0;5m [INFO] Your system firmware is fully up to date!${NC}"
-        return 0
-    fi
+  # 4. Firmware Update
+  echo -e "\n${YELLOW}[4/4] Updating System Firmware...${NC}"
+  if ! update_firmware; then
+    failed_steps+=("Firmware Update")
+  fi
 
-    # 4. Prompt user for confirmation before applying
-    echo -e "\n${YELLOW}[3/4] Firmware updates found!${NC}"
-    read -rp "Do you want to proceed with applying updates? (y/N): " confirm
-    if [[ ! "$confirm" =~ ^[Yy]$ ]]; then
-        echo -e "${RED}Firmware update canceled by user.${NC}"
-        return 0
-    fi
-
-    # 5. Apply the updates
-    echo -e "\n${YELLOW}[4/4] Applying firmware updates...${NC}"
-    echo -e "${RED}Do NOT turn off or unplug your computer during this process!${NC}\n"
-    
-    fwupdmgr update
-
-    # 6. Check if a reboot is needed
-    if [ $? -eq 0 ]; then
-        echo -e "\n${GREEN}=== Firmware Update Complete ===${NC}"
-        read -rp "A system restart may be required to complete installation. Reboot now? (y/N): " reboot_confirm
-        if [[ "$reboot_confirm" =~ ^[Yy]$ ]]; then
-            echo -e "${BLUE}Rebooting system...${NC}"
-            sudo reboot
-        else
-            echo -e "${YELLOW}Please remember to restart your system manually later.${NC}"
-        fi
-    else
-        echo -e "\n${RED}[ERROR] Firmware update encountered an issue.${NC}"
-        return 1
-    fi
+  # Final Summary Output
+  echo -e "\n${BLUE}========================================${NC}"
+  if [ ${#failed_steps[@]} -eq 0 ]; then
+    echo -e "${GREEN}✅ System update complete with no errors!${NC}"
+  else
+    echo -e "${RED}❌ System update finished, but the following step(s) failed:${NC}"
+    for step in "${failed_steps[@]}"; do
+      echo -e "${RED}  - $step${NC}"
+    done
+  fi
+  echo -e "${BLUE}========================================${NC}\n"
 }
 
 alias hp-update='update_firmware'

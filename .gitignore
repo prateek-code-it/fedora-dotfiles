@@ -95,6 +95,8 @@
 !/lists/**
 !/vmcopy/
 !/vmcopy/**
+!/easyeda
+!/easyeda/**
 
 # 6. Repo Management & Scripts
 !.gitignore

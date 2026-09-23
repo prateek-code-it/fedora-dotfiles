@@ -398,6 +398,8 @@ sysupdate() {
   local YELLOW='\033[1;33m'
   local BLUE='\033[0;34m'
   local NC='\033[0m' # No Color
+  local fpclean='flatpak uninstall --unused | yes'
+  local cleanup='sudo dnf autoremove'
 
   local failed_steps=()
 
@@ -429,10 +431,10 @@ sysupdate() {
 
   # 3. System Cleanup
   echo -e "\n${YELLOW}[3/4] Cleaning extra system caches...${NC}"
-  if command -v cleanup &>/dev/null; then
+  if command -v $cleanup &>/dev/null; then
     cleanup | lolcat
   fi
-  if command -v fpclean &>/dev/null; then
+  if command -v $fpclean &>/dev/null; then
     fpclean | lolcat
   fi
   sleep 1

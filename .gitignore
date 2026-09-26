@@ -105,8 +105,8 @@
 # 7.Terminal files 
 !.zshrc
 !.bashrc
-!.oh-my-zsh
-!.oh-my-zsh/**
+!/.oh-my-zsh
+!/.oh-my-zsh/**
 
 
 # 8. Security & Cache Exclusions

@@ -80,8 +80,8 @@
 !/lazydocker/**
 
 # 5. Screenshots, Audio & Tools
-!/swappy/
-!/swappy/**
+#!/swappy/
+#!/swappy/**
 !/satty/
 !/satty/**
 !/spicetify/
@@ -105,8 +105,8 @@
 # 7.Terminal files 
 !.zshrc
 !.bashrc
-#!/.oh-my-zsh/
-#!/.oh-my-zsh/**
+!/.oh-my-zsh/
+!/.oh-my-zsh/**
 
 
 # 8. Security & Cache Exclusions

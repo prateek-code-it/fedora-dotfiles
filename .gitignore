@@ -105,7 +105,7 @@
 # 7.Terminal files 
 !.zshrc
 !.bashrc
-!/.oh-my-zsh
+!/.oh-my-zsh/
 !/.oh-my-zsh/**
 
 

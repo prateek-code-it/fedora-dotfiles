@@ -96,6 +96,8 @@
 !/vmcopy/**
 !/easyeda
 !/easyeda/**
+!/Brain_Shell
+!/Brain_Shell/**
 
 # 6. Repo Management & Scripts
 !.gitignore

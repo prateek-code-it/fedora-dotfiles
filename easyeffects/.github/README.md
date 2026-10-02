@@ -1,1 +1,0 @@
-/home/patrik/dotfiles/.config/easyeffects/.github/README.md

@@ -1,0 +1,14 @@
+{
+  "dashboard-home": {
+    "mods": "SUPER + SHIFT",
+    "key": "Z"
+  },
+  "dashboard-launcher": {
+    "mods": "SUPER",
+    "key": "D"
+  },
+  "audioMix-toggle": {
+    "mods": "SUPER + SHIFT",
+    "key": "M"
+  }
+}

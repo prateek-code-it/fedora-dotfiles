@@ -40,7 +40,8 @@ hl.bind("SUPER + ALT + G", hl.dsp.exec_cmd("qs ipc -c " .. shell .. " call vpn-t
 hl.bind("SUPER + ALT + H", hl.dsp.exec_cmd("qs ipc -c " .. shell .. " call hotspot-toggle toggle"))
 
 -- Audio Tabs
-hl.bind("SUPER + A", hl.dsp.exec_cmd("qs ipc -c " .. shell .. " call audioOut-toggle toggle"))
+hl.bind("SUPER + SHIFT + A", hl.dsp.exec_cmd("qs ipc -c " .. shell .. " call audioOut-toggle toggle"))
+hl.bind("SUPER + A", hl.dsp.exec_cmd("qs ipc -c " .. shell .. " call equalizer-toggle toggle"))
 hl.bind("SUPER + ALT + I", hl.dsp.exec_cmd("qs ipc -c " .. shell .. " call audioIn-toggle toggle"))
 hl.bind("SUPER + SHIFT + M", hl.dsp.exec_cmd("qs ipc -c " .. shell .. " call audioMix-toggle toggle"))
 

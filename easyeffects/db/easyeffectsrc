@@ -1,0 +1,13 @@
+[StreamInputs]
+inputDevice=alsa_input.usb-Generic_AB13X_USB_Audio_20210926172016-00.mono-fallback
+visiblePage=pluginsPage
+
+[StreamOutputs]
+outputDevice=alsa_output.usb-Generic_AB13X_USB_Audio_20210926172016-00.iec958-stereo
+plugins=bass_enhancer#0,bass_loudness#0,equalizer#0,reverb#0
+visiblePage=pluginsPage
+visiblePlugin=reverb#0
+
+[Window]
+height=494
+width=955

@@ -3,9 +3,9 @@ inputDevice=alsa_input.usb-Generic_AB13X_USB_Audio_20210926172016-00.mono-fallba
 visiblePage=pluginsPage
 
 [StreamOutputs]
+blocklist=bluez_input.C0_D5_E2_23_48_A6.2
 outputDevice=alsa_output.usb-Generic_AB13X_USB_Audio_20210926172016-00.iec958-stereo
 plugins=bass_enhancer#0,bass_loudness#0,equalizer#0,reverb#0
-visiblePage=pluginsPage
 visiblePlugin=reverb#0
 
 [Window]

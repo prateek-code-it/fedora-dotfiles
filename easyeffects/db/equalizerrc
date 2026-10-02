@@ -1,0 +1,11 @@
+[soe][Equalizer#0]
+balance=0.21
+outputGain=8
+
+[soe][Equalizer#0#left]
+band0Gain=7
+band9Gain=1
+
+[soe][Equalizer#0#right]
+band0Gain=7
+band9Gain=1

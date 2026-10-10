@@ -9,5 +9,5 @@ plugins=bass_enhancer#0,bass_loudness#0,equalizer#0,reverb#0
 visiblePlugin=reverb#0
 
 [Window]
-height=494
-width=955
+height=966
+width=933

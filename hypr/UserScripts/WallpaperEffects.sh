@@ -1,108 +1,67 @@
 #!/usr/bin/env bash
-# /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  #
-# Wallpaper Effects using ImageMagick (SUPER SHIFT W)
+# Wallpaper effects with ImageMagick, applied through Caelestia
 
-# Variables
-terminal=kitty
-wallpaper_current="$HOME/.config/hypr/wallpaper_effects/.wallpaper_current"
-wallpaper_output="$HOME/.config/hypr/wallpaper_effects/.wallpaper_modified"
-SCRIPTSDIR="$HOME/.config/hypr/scripts"
-focused_monitor=$(hyprctl monitors -j | jq -r '.[] | select(.focused) | .name')
+CAELESTIA=/home/patrik/.local/bin/caelestia
+STATE_DIR="$HOME/.config/hypr/wallpaper_effects"
+wallpaper_current="$STATE_DIR/.wallpaper_current"
+wallpaper_output="$STATE_DIR/.wallpaper_modified"
 rofi_theme="$HOME/.config/rofi/config-wallpaper-effect.rasi"
+mkdir -p "$STATE_DIR"
 
-# Directory for swaync
-iDIR="$HOME/.config/swaync/images"
-iDIRi="$HOME/.config/swaync/icons"
-
-# swww transition config
-FPS=60
-TYPE="wipe"
-DURATION=2
-BEZIER=".43,1.19,1,.4"
-SWWW_PARAMS="--transition-fps $FPS --transition-type $TYPE --transition-duration $DURATION --transition-bezier $BEZIER"
-
-# Define ImageMagick effects
+# Effects and their ImageMagick arguments
 declare -A effects=(
-    ["No Effects"]="no-effects"
-    ["Black & White"]="magick $wallpaper_current -colorspace gray -sigmoidal-contrast 10,40% $wallpaper_output"
-    ["Blurred"]="magick $wallpaper_current -blur 0x10 $wallpaper_output"
-    ["Charcoal"]="magick $wallpaper_current -charcoal 0x5 $wallpaper_output"
-    ["Edge Detect"]="magick $wallpaper_current -edge 1 $wallpaper_output"
-    ["Emboss"]="magick $wallpaper_current -emboss 0x5 $wallpaper_output"
-    ["Frame Raised"]="magick $wallpaper_current +raise 150 $wallpaper_output"
-    ["Frame Sunk"]="magick $wallpaper_current -raise 150 $wallpaper_output"
-    ["Negate"]="magick $wallpaper_current -negate $wallpaper_output"
-    ["Oil Paint"]="magick $wallpaper_current -paint 4 $wallpaper_output"
-    ["Posterize"]="magick $wallpaper_current -posterize 4 $wallpaper_output"
-    ["Polaroid"]="magick $wallpaper_current -polaroid 0 $wallpaper_output"
-    ["Sepia Tone"]="magick $wallpaper_current -sepia-tone 65% $wallpaper_output"
-    ["Solarize"]="magick $wallpaper_current -solarize 80% $wallpaper_output"
-    ["Sharpen"]="magick $wallpaper_current -sharpen 0x5 $wallpaper_output"
-    ["Vignette"]="magick $wallpaper_current -vignette 0x3 $wallpaper_output"
-    ["Vignette-black"]="magick $wallpaper_current -background black -vignette 0x3 $wallpaper_output"
-    ["Zoomed"]="magick $wallpaper_current -gravity Center -extent 1:1 $wallpaper_output"
+    ["Black & White"]="-colorspace gray -sigmoidal-contrast 10,40%"
+    ["Blurred"]="-blur 0x10"
+    ["Charcoal"]="-charcoal 0x5"
+    ["Edge Detect"]="-edge 1"
+    ["Emboss"]="-emboss 0x5"
+    ["Frame Raised"]="+raise 150"
+    ["Frame Sunk"]="-raise 150"
+    ["Negate"]="-negate"
+    ["Oil Paint"]="-paint 4"
+    ["Posterize"]="-posterize 4"
+    ["Polaroid"]="-polaroid 0"
+    ["Sepia Tone"]="-sepia-tone 65%"
+    ["Solarize"]="-solarize 80%"
+    ["Sharpen"]="-sharpen 0x5"
+    ["Vignette"]="-vignette 0x3"
+    ["Vignette-black"]="-background black -vignette 0x3"
+    ["Zoomed"]="-gravity Center -extent 1:1"
 )
 
-# Function to apply no effects
-no-effects() {
-    swww img -o "$focused_monitor" "$wallpaper_current" $SWWW_PARAMS &&
-    wait $!
-    wallust run "$wallpaper_current" -s &&
-    wait $!
-    # Refresh rofi, waybar, wallust palettes
-	sleep 2
-	"$SCRIPTSDIR/Refresh.sh"
-
-    notify-send -u low -i "$iDIR/ja.png" "No wallpaper" "effects applied"
-    # copying wallpaper for rofi menu
-    cp "$wallpaper_current" "$wallpaper_output"
-}
-
-# Function to run rofi menu
-main() {
-    # Populate rofi menu options
-    options=("No Effects")
-    for effect in "${!effects[@]}"; do
-        [[ "$effect" != "No Effects" ]] && options+=("$effect")
-    done
-
-    choice=$(printf "%s\n" "${options[@]}" | LC_COLLATE=C sort | rofi -dmenu -i -config $rofi_theme)
-
-    # Process user choice
-    if [[ -n "$choice" ]]; then
-        if [[ "$choice" == "No Effects" ]]; then
-            no-effects
-        elif [[ "${effects[$choice]+exists}" ]]; then
-            # Apply selected effect
-            notify-send -u normal -i "$iDIR/ja.png"  "Applying:" "$choice effects"
-            eval "${effects[$choice]}"
-            
-            # intial kill process
-            for pid in swaybg mpvpaper; do
-            killall -SIGUSR1 "$pid"
-            done
-
-            sleep 1
-            swww img -o "$focused_monitor" "$wallpaper_output" $SWWW_PARAMS &
-
-            sleep 2
-  
-            wallust run "$wallpaper_output" -s &
-            sleep 1
-            # Refresh rofi, waybar, wallust palettes
-            "${SCRIPTSDIR}/Refresh.sh"
-            notify-send -u low -i "$iDIR/ja.png" "$choice" "effects applied"
-        else
-            echo "Effect '$choice' not recognized."
-        fi
-    fi
-}
-
-# Check if rofi is already running and kill it
-if pidof rofi > /dev/null; then
+# Pressing the key again closes the menu
+if pidof rofi >/dev/null; then
     pkill rofi
+    exit 0
 fi
 
-main
+# The wallpaper Caelestia is showing right now is the source for every effect
+src=$("$CAELESTIA" shell wallpaper get 2>/dev/null)
+if [[ -z "$src" || ! -f "$src" ]]; then
+    notify-send "Wallpaper effects" "Could not read the current wallpaper"
+    exit 1
+fi
+cp "$src" "$wallpaper_current"
 
-sleep 1
+choice=$({
+    echo "No Effects"
+    for e in "${!effects[@]}"; do echo "$e"; done | LC_COLLATE=C sort
+} | rofi -dmenu -i -config "$rofi_theme")
+
+case "$choice" in
+    "")
+        exit 0
+        ;;
+    "No Effects")
+        "$CAELESTIA" wallpaper -f "$wallpaper_current"
+        ;;
+    *)
+        if [[ -z "${effects[$choice]+x}" ]]; then
+            notify-send "Wallpaper effects" "Effect '$choice' not recognized"
+            exit 1
+        fi
+        # Unquoted on purpose: each argument must split into its own word
+        magick "$wallpaper_current" ${effects[$choice]} "$wallpaper_output" &&
+            "$CAELESTIA" wallpaper -f "$wallpaper_output"
+        ;;
+esac

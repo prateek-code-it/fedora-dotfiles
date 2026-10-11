@@ -104,10 +104,9 @@ export PATH="$PATH:$HOME/.spicetify"
 export JAVA_HOME="/usr/lib/jvm/java-21-temurin-jdk"
 export PATH="$JAVA_HOME/bin:$PATH"
 export PATH="$HOME/.local/share/flatpak/exports/bin:/var/lib/flatpak/exports/bin:$PATH"
+export PATH=$PATH:/home/patrik/.spicetify
+export PATH="$HOME/.cargo/bin:$PATH"
 
-if [[ -d "$HOME/.cargo/bin" ]]; then
-    export PATH="$HOME/.cargo/bin:$PATH"
-fi
 
 # ------------------------------------------------------------
 # Basic Aliases
@@ -621,4 +620,3 @@ fastfetch --pipe false -c ~/.config/fastfetch/config_basic.jsonc
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-export PATH=$PATH:/home/patrik/.spicetify

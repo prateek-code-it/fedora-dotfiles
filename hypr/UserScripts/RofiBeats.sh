@@ -13,7 +13,11 @@ mkdir -p "$(dirname "$music_list")"
 
 # Send notification
 notification() {
-  notify-send -u normal -i "$iDIR/music.png" "$@"
+  if [[ -n "$2" ]]; then
+    /home/patrik/.local/bin/caelestia shell toaster info "$1" "$2" music
+  else
+    /home/patrik/.local/bin/caelestia shell toaster info "Music" "$1" music
+  fi
 }
 
 # Check if mpv is currently playing

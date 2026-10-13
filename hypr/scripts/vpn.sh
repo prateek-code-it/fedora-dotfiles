@@ -3,8 +3,8 @@
 # Check if WARP is currently connected using whole-word matching (-w)
 if warp-cli status 2>&1 | grep -qw "Connected"; then
     warp-cli disconnect
-    notify-send -u normal -i network-vpn "Cloudflare WARP" "VPN Disconnected"
+    /home/patrik/.local/bin/caelestia shell toaster info "Cloudflare WARP" "VPN Disconnected" network-vpn
 else
     warp-cli connect
-    notify-send -u normal -i network-vpn "Cloudflare WARP" "VPN Connected Successfully"
+    /home/patrik/.local/bin/caelestia shell toaster success "Cloudflare WARP" "VPN Connected" network-vpn
 fi

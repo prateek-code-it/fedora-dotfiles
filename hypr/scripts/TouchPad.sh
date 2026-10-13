@@ -23,7 +23,7 @@ if [[ -z "$touchpad_device" && -f "$laptops_conf" ]]; then
 fi
 
 if [[ -z "$touchpad_device" ]]; then
-    notify-send -u low -i "$notif" " Touchpad" " Device name not set (check Laptops.conf)"
+    true -u low -i "$notif" " Touchpad" " Device name not set (check Laptops.conf)"
     exit 1
 fi
 
@@ -32,13 +32,13 @@ status_file="${XDG_RUNTIME_DIR:-/tmp}/touchpad.status"
 
 enable_touchpad() {
     printf "true" >"$status_file"
-    notify-send -u low -i "$notif" " Enabling" " touchpad"
+    true -u low -i "$notif" " Enabling" " touchpad"
     hyprctl keyword "$touchpad_keyword" true -r
 }
 
 disable_touchpad() {
     printf "false" >"$status_file"
-    notify-send -u low -i "$notif" " Disabling" " touchpad"
+    true -u low -i "$notif" " Disabling" " touchpad"
     hyprctl keyword "$touchpad_keyword" false -r
 }
 
